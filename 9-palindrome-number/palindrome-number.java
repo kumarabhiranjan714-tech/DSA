@@ -5,15 +5,20 @@ class Solution {
             return false;
         }
 
-        int original = x;
-        int reverse = 0;
-
-        while (x != 0) {
-            int digit = x % 10;
-            reverse = reverse * 10 + digit;
-            x = x / 10;
-        }
-
-        return original == reverse;
+    int n = x;
+    int revNum = 0;
+    while(n>0){
+        int d = n%10;
+        revNum = revNum*10 + d;
+        n = n/10;
     }
+    if(revNum == x){
+        return true;
+    }
+    else{
+        return false;
+    }
+
 }
+}
+    
