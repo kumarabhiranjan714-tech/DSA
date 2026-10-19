@@ -3,21 +3,32 @@ import java.util.*;
 
 class Solution {
     public List<Integer> addToArrayForm(int[] num, int k) {
-        List<Integer> result = new ArrayList<>();
+        List<Integer> ans = new ArrayList<>();
 
-        int i = num.length - 1;
+        int p = num.length - 1;
+        int carry = 0;
 
-        while (i >= 0 || k > 0) {
-            if (i >= 0) {
-                k += num[i];
-                i--;
+        while (p >= 0 || k > 0 || carry > 0) {
+            int numval = 0;
+
+            if (p >= 0) {
+                numval = num[p];
             }
 
-            result.add(k % 10);
-            k /= 10;
+            int d = k % 10;
+            int sum = numval + d + carry;
+
+            int digit = sum % 10;
+            carry = sum / 10;
+
+            ans.add(digit);
+
+            p--;
+            k = k / 10;
         }
 
-        Collections.reverse(result);
-        return result;
+        Collections.reverse(ans);
+
+        return ans;
     }
 }
